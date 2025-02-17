@@ -1,4 +1,4 @@
-#include "..\source\binari.h"
+#include "../source/binari.h"
 #include "json.hpp"
 #include <iostream>
 #include <fstream>

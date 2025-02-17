@@ -1,4 +1,4 @@
-#include "..\source\interseccio.h"
+#include "../source/interseccio.h"
 #include "json.hpp"
 #include <iostream>
 #include <fstream>
