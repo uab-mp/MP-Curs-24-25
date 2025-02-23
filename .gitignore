@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio files
+*.db
+*.ipch
+DocumentLayout.json
+DocumentLayout.*
+*.vsidx
+SemanticSymbols.*
+*.suo
+
+
