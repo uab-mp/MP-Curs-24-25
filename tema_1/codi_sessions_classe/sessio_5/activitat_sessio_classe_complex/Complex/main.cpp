@@ -35,7 +35,7 @@ bool validaResMultiplica(Complex resultat, Complex c1, Complex c2)
 	c2.recupera(realC2, imgC2);
 	resultat.recupera(realRes, imgRes);
 	if (realRes == ((realC1 * realC2) - (imgC1 * imgC2)))
-		if (imgRes == ((realC1 * imgC2) - (imgC1 * realC2)))
+		if (imgRes == ((realC1 * imgC2) + (imgC1 * realC2)))
 			return true;
 	return false;
 }
