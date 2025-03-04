@@ -4,6 +4,7 @@ void Estudiant::inicialitza(string nom, string niu)
 {
     m_nom = nom;
     m_niu = niu;
+    m_nNotes = 0;
 }
 
 bool Estudiant::afegeixNota(float nota)
