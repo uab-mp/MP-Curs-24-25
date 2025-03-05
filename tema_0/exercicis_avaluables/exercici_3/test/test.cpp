@@ -43,7 +43,7 @@ float testAssignacio(json& output)
         {"output", ""}
     };
 
-    outputParcial << "Test de la funció d'assignacio" << endl;
+    outputParcial << "Test de la funcio d'assignacio" << endl;
 	outputParcial << "==============================" << endl;
 	cout << outputParcial.str();
 	outputFinal += outputParcial.str();
