@@ -169,7 +169,7 @@ float testVendaEntrades(VendaEntrades& gestioEntrades, json& output)
 		outputParcial << "N. entrades: " << nEntrades[i] << endl;
         if (operacio[i] == 'A')
         {
-            outputParcial << "Seients anul·lats: ";
+            outputParcial << "Seients anul.lats: ";
             mostraSeients(seientsEsperats[i], nEntrades[i], outputParcial);
             outputParcial << endl;
         }
