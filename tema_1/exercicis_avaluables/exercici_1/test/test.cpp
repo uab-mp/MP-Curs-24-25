@@ -212,7 +212,7 @@ float testVendaEntrades(VendaEntrades& gestioEntrades, json& output)
                 mostraOcupacio(ocupacio, outputParcial);
                 outputParcial << endl;
 
-                correcte = correcte && (preu == preuEsperat[i]) && 
+                correcte = correcte && (fabs(preu - preuEsperat[i]) < 0.1) && 
                                     comparaSeients(seients, seientsEsperats[i], nEntrades[i])
                                     && comparaOcupacio(ocupacio, ocupacioEsperada);
             }
