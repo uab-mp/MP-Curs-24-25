@@ -1,0 +1,12 @@
+X b8
+D d8
+X h8
+X g7
+X f6
+R a5
+O h4
+O b2
+X h2
+O a1
+O c1
+D e1

@@ -109,9 +109,11 @@ void afegeixEspectacles(VendaEntrades& gestioEntrades, string& outputFinal)
 	}
 }
 
-float testVendaEntrades(VendaEntrades& gestioEntrades, json& output)
+float testVendaEntrades(VendaEntrades& gestioEntrades, json& outputGeneral)
 {
 	float reduccio = 0;
+    float grade = 0.0;
+    ofstream jsonFile;
 
 	const int N_PROVES = 14;
     char operacio[N_PROVES] = { 'C', 'C', 'C', 'C', 'C', 'C', 'A', 'A', 'C', 'C', 'C', 'A', 'A', 'A' };
@@ -141,22 +143,19 @@ float testVendaEntrades(VendaEntrades& gestioEntrades, json& output)
     for (int i = 0; i < MAX_SEIENTS; i++)
         ocupacioEsperada[i] = false;
 
-    stringstream outputParcial;
-	string outputFinal = "";
-
-	output =
-	{
-		{"name", "TEST VENDA ENTRADES"},
-		{"visibility", "visible"},
-		{"output", ""}
-	};
-
-
-	outputParcial << "Iniciant test del metode compraEntrades" << endl;
-	outputParcial << "=======================================" << endl;
 
 	for (int i = 0; i < N_PROVES; i++)
 	{
+        json outputTest;
+        stringstream outputParcial;
+
+        outputTest =
+        {
+            {"name", "Test " + to_string(i + 1)},
+            {"visibility", "visible"},
+            {"output", ""}
+        };
+
         bool correcte = true;
 		outputParcial << "TEST " << i + 1 << ": ";
         if (operacio[i] == 'C')
@@ -255,17 +254,27 @@ float testVendaEntrades(VendaEntrades& gestioEntrades, json& output)
             reduccio += 1.0;
         }
 		outputParcial << "-----------------------------------------------------------------------" << endl;
+
         cout << outputParcial.str();
-        outputFinal += outputParcial.str();
+        outputTest["output"] = outputParcial.str();
         outputParcial.str("");
+
+        if (correcte)
+        {
+            outputTest["status"] = "passed";
+            grade += 0.5;
+        }		    
+	    else
+		    outputTest["status"] = "failed";
+
+        outputGeneral["score"] = grade;
+        outputGeneral["tests"].push_back(outputTest);
+        jsonFile.open("results.json");
+        jsonFile << setw(4) << outputGeneral << endl;
+        jsonFile.close();
 	}
 
-    output["output"] = outputFinal;
 
-	if (reduccio == 0)
-		output["status"] = "passed";
-	else
-		output["status"] = "failed";
 	return reduccio;
 }
 
@@ -306,16 +315,15 @@ int main()
 	jsonFile << setw(4) << output << endl;
 	jsonFile.close();
 
-    json outputTestCompraEntrades;
-	float reduccio = testVendaEntrades(gestioEntrades, outputTestCompraEntrades);
-	grade = grade + (10 - reduccio);
+    float reduccio = testVendaEntrades(gestioEntrades, output);
+    grade = grade + (10 - reduccio);
     if (grade < 0)
-    grade = 0.0;
-	output["score"] = grade;
-	output["tests"].push_back(outputTestCompraEntrades);
-	jsonFile.open("results.json");
-	jsonFile << setw(4) << output << endl;
-	jsonFile.close();
+        grade = 0;
+        
+    output["score"] = grade;
+    jsonFile.open("results.json");
+    jsonFile << setw(4) << output << endl;
+    jsonFile.close();
 
 
 	cout << "Grade :=>> " << grade << endl;

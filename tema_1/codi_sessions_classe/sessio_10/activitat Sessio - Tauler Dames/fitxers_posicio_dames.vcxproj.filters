@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado\source">
+      <UniqueIdentifier>{cef4e694-c7cd-4aee-a35f-65059ceb5aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\test">
+      <UniqueIdentifier>{686589ae-8342-4217-8da3-fe9c087c5a64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\source">
+      <UniqueIdentifier>{0292b60c-c914-41a0-8779-159acd3644ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\test">
+      <UniqueIdentifier>{ece3640f-f352-4905-afef-669e9474776e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="dames_output.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+    <Text Include="dames_input.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\posicio.cpp">
+      <Filter>Archivos de origen\source</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test.cpp">
+      <Filter>Archivos de origen\test</Filter>
+    </ClCompile>
+    <ClCompile Include="source\tauler.cpp">
+      <Filter>Archivos de origen\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\posicio.h">
+      <Filter>Archivos de encabezado\source</Filter>
+    </ClInclude>
+    <ClInclude Include="test\json.hpp">
+      <Filter>Archivos de encabezado\test</Filter>
+    </ClInclude>
+    <ClInclude Include="source\tauler.h">
+      <Filter>Archivos de encabezado\source</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
