@@ -38,29 +38,3 @@ bool Estudiant::operator==(const Estudiant& estudiant) const
     return ((m_nom == estudiant.m_nom) && (m_niu == estudiant.m_niu));
 }
 
-ostream& operator<<(ostream& output, const Estudiant& estudiant)
-{
-    output << estudiant.getNom() << " " << estudiant.getNiu() << " " << estudiant.calculaNotaMitjana();
-    return output;
- }
-
-ofstream& operator<<(ofstream& output, const Estudiant& estudiant)
-{
-    output << estudiant.getNom() << " " << estudiant.getNiu() << " " << estudiant.calculaNotaMitjana();
-    return output;
-}
-
-ifstream& operator>>(ifstream& input, Estudiant& estudiant)
-{
-    string niu, nom;
-    int nNotes;
-    input >> nom >> niu >> nNotes;
-    estudiant.inicialitza(nom, niu);
-    int nota;
-    for (int i = 0; i < nNotes; i++)
-    {
-        input >> nota;
-        estudiant.afegeixNota(nota);
-    }
-    return input;
-}

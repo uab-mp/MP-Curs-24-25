@@ -25,9 +25,6 @@ private:
     int m_nNotes;
 };
 
-ostream& operator<<(ostream& output, const Estudiant& llista);
-ofstream& operator<<(ofstream& output, const Estudiant& llista);
-ifstream& operator>>(ifstream& input, Estudiant& llista);
 
 #endif
 
