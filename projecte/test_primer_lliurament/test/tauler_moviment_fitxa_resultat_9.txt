@@ -1,0 +1,14 @@
+O a1
+O c1
+O e1
+O g1
+O b2
+O d2
+O f2
+O h2
+D h8
+X b8
+X e7
+X a7
+X c7
+X g5
