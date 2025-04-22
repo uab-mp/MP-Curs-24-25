@@ -1,24 +1,29 @@
 #include "../source/seient.h"
+#include "json.hpp"
 #include <iostream>
-using namespace std;
+#include <fstream>
+#include <sstream>
 
-void mostraBool(bool logic)
+using namespace std;
+using json = nlohmann::json;
+
+void mostraBool(bool logic, stringstream& outputParcial)
 {
 	if (logic)
-		cout << "TRUE";
+		outputParcial << "TRUE";
 	else
-		cout << "FALSE";
+		outputParcial << "FALSE";
 }
 
-void mostraPassatger(Passatger* p)
+void mostraPassatger(Passatger* p, stringstream& outputParcial)
 {
 	if (p == nullptr)
-		cout << "nullptr";
+		outputParcial << "nullptr";
 	else
 		if (p->getDni() == "")
-			cout << "nullptr";
+			outputParcial << "nullptr";
 		else
-			cout << p->getDni() << ", " << p->getNom();
+			outputParcial << p->getDni() << ", " << p->getNom();
 }
 
 
@@ -39,14 +44,61 @@ bool igualsPassatgers(Passatger* pObtingut, Passatger* pEsperat)
 	return iguals;
 }
 
-float testSeient()
+float testSeient(json& outputGeneral)
 {
 	float reduccio = 0.0;
+	float grade = 0.0;
 
-	cout << "Comment :=>>" << endl;
-	cout << "Comment :=>>" << endl;
-	cout << "Comment :=>> Iniciant test de la classe Seient" << endl;
-	cout << "Comment :=>> =================================" << endl;
+	json outputTest;
+	stringstream outputParcial;
+	ofstream jsonFile;
+
+	outputTest =
+	{
+		{"name", "TEST INICIALITZACIO CLASSE SEIENT"},
+		{"visibility", "visible"},
+		{"output", ""}
+	};
+
+	outputParcial << " TEST INICIALITZACIO SEIENT" << endl;
+	outputParcial << " --------------------------" << endl;
+	outputParcial << "" << endl;
+	outputParcial << " Inicialitzant un seient amb codi 1A" << endl;
+	Seient s("1A");
+
+	outputParcial << " ---" << endl;
+	outputParcial << " Valor esperat del passatger despres d'inicialitzar: ";
+	mostraPassatger(nullptr, outputParcial);
+	outputParcial << endl;
+	outputParcial << " ---" << endl;
+	outputParcial << " Valor obtingut del passatger despres d'inicialitzar: ";
+	Passatger* p = s.getPassatger();
+	mostraPassatger(p, outputParcial);
+	outputParcial << endl;
+	if (!igualsPassatgers(p, nullptr))
+	{
+		outputTest["status"] = "failed";
+		outputParcial << " ERROR" << endl;
+		reduccio += 2.5;
+	}
+	else
+	{
+		outputTest["status"] = "passed";
+		outputParcial << " CORRECTE" << endl;
+		grade += 2.0;
+	}
+	outputParcial << "-----------------------------------------------" << endl;
+
+	cout << outputParcial.str();
+	outputTest["output"] = outputParcial.str();
+	outputParcial.str("");
+
+	outputGeneral["score"] = grade;
+	outputGeneral["tests"].push_back(outputTest);
+	jsonFile.open("results.json");
+	jsonFile << setw(4) << outputGeneral << endl;
+	jsonFile.close();
+
 	const int N_PROVES = 4;
 	Passatger valorEsperat[N_PROVES] =
 	{
@@ -66,70 +118,77 @@ float testSeient()
 		{ "", "" }
 	};
 
-	cout << "Comment :=>>" << endl;
-	cout << "Comment :=>> Inicialitzant un seient amb codi 1A" << endl;
-	Seient s("1A");
-
-	cout << "Comment :=>> ---" << endl;
-	cout << "Comment :=>> Valor esperat del passatger despres d'inicialitzar: ";
-	mostraPassatger(nullptr);
-	cout << endl;
-	cout << "Comment :=>> ---" << endl;
-	cout << "Comment :=>> Valor obtingut del passatger despres d'inicialitzar: ";
-	Passatger* p = s.getPassatger();
-	mostraPassatger(p);
-	cout << endl; 
-	if (!igualsPassatgers(p, nullptr))
-	{
-		cout << "Comment :=>> ERROR" << endl;
-		reduccio += 1.0;
-	}
-	else
-		cout << "Comment :=>> CORRECTE" << endl;
 
 
 	for (int i = 0; i < N_PROVES; i++)
 	{
+		json outputTest;
+		stringstream outputParcial;
+		ofstream jsonFile;
+
+		outputTest =
+		{
+			{"name", "TEST CLASSE SEIENT" + to_string(i + 1)},
+			{"visibility", "visible"},
+			{"output", ""}
+		};
+
 		bool resultat;
 		Passatger* p;
-		cout << "Comment :=>> ------------------------------------------" << endl;
-		cout << "Comment :=>> TEST " << i + 1 << endl;
+		outputParcial << " TEST " << i + 1 << endl;
 		if (operacio[i] == 'A')
 		{
-			cout << "Comment :=>> Afegint passatger al seient..." << endl;
-			cout << "Comment :=>> Dades del passatger: "; mostraPassatger(&dadesPassatger[i]); cout << endl;
-			cout << "Comment :=>> ---" << endl;
-			cout << "Comment :=>> Valor retorn esperat: "; mostraBool(resultatEsperat[i]); cout << endl;
-			cout << "Comment :=>> Passatger esperat: "; mostraPassatger(&valorEsperat[i]); cout << endl;
-			cout << "Comment :=>> ---" << endl;
+			outputParcial << " Afegint passatger al seient..." << endl;
+			outputParcial << " Dades del passatger: "; mostraPassatger(&dadesPassatger[i], outputParcial); outputParcial << endl;
+			outputParcial << " ---" << endl;
+			outputParcial << " Valor retorn esperat: "; mostraBool(resultatEsperat[i], outputParcial); outputParcial << endl;
+			outputParcial << " Passatger esperat: "; mostraPassatger(&valorEsperat[i], outputParcial); outputParcial << endl;
+			outputParcial << " ---" << endl;
 			resultat = s.assignaPassatger(dadesPassatger[i].getDni(), dadesPassatger[i].getNom());
 			p = s.getPassatger();
-			cout << "Comment :=>> Valor retorn obtingut: "; mostraBool(resultat); cout << endl;
-			cout << "Comment :=>> Passatger obtingut: "; mostraPassatger(p); cout << endl;
+			outputParcial << " Valor retorn obtingut: "; mostraBool(resultat, outputParcial); outputParcial << endl;
+			outputParcial << " Passatger obtingut: "; mostraPassatger(p, outputParcial); outputParcial << endl;
 		}
 		else
 		{
-			cout << "Comment :=>> Eliminant el passatger del seient..." << endl;
-			cout << "Comment :=>> ---" << endl;
-			cout << "Comment :=>> Valor retorn esperat: "; mostraBool(resultatEsperat[i]); cout << endl;
-			cout << "Comment :=>> Passatger esperat: "; mostraPassatger(&valorEsperat[i]); cout << endl;
-			cout << "Comment :=>> ---" << endl;
+			outputParcial << " Eliminant el passatger del seient..." << endl;
+			outputParcial << " ---" << endl;
+			outputParcial << " Valor retorn esperat: "; mostraBool(resultatEsperat[i], outputParcial); outputParcial << endl;
+			outputParcial << " Passatger esperat: "; mostraPassatger(&valorEsperat[i], outputParcial); outputParcial << endl;
+			outputParcial << " ---" << endl;
 			resultat = s.eliminaPassatger();
 			p = s.getPassatger();
-			cout << "Comment :=>> Valor retorn obtingut: "; mostraBool(resultat); cout << endl;
-			cout << "Comment :=>> Passatger obtingut: "; mostraPassatger(p); cout << endl;
+			outputParcial << " Valor retorn obtingut: "; mostraBool(resultat, outputParcial); outputParcial << endl;
+			outputParcial << " Passatger obtingut: "; mostraPassatger(p, outputParcial); outputParcial << endl;
 		}
 
 		if ((resultat == resultatEsperat[i]) && igualsPassatgers(p, &valorEsperat[i]))
-			cout << "Comment :=>> CORRECTE" << endl;
+		{
+			outputTest["status"] = "passed";
+			outputParcial << " CORRECTE" << endl;
+			grade += 2.0;
+		}
+			
 		else
 		{
-			cout << "Comment :=>> ERROR" << endl;
-			reduccio += 1.0;
+			outputTest["status"] = "failed";
+			outputParcial << " ERROR" << endl;
+			reduccio += 2.5;
 		}
+		outputParcial << " ------------------------------------------" << endl;
+		
+		cout << outputParcial.str();
+		outputTest["output"] = outputParcial.str();
+		outputParcial.str("");
+
+		outputGeneral["score"] = grade;
+		outputGeneral["tests"].push_back(outputTest);
+		jsonFile.open("results.json");
+		jsonFile << setw(4) << outputGeneral << endl;
+		jsonFile.close();
 	}
-	if (reduccio > 2.0)
-		reduccio = 2.0;
+	if (reduccio > 10.0)
+		reduccio = 10.0;
 	return reduccio;
 }
 
@@ -140,20 +199,27 @@ float testSeient()
 int main()
 {
 	float grade = 0.0;
-	float reduccio;
+	json output;
+	ofstream jsonFile;
 
-	cout << endl << endl;
-	cout << "Comment :=>> INICIANT TEST" << endl;
-	cout << "Comment :=>> =============" << endl;
-	cout << "Comment :=>> " << endl;
+	output["score"] = grade;
+	output["visibility"] = "visible";
+	output["stdout_visibility"] = "visible";
+	output["tests"] = json::array();
 
-	cout << "Grade :=>> " << grade << endl;
-	reduccio = testSeient();
+	jsonFile.open("results.json");
+	jsonFile << setw(4) << output << endl;
+	jsonFile.close();
+
+	float reduccio = testSeient(output);
 	grade = grade + (10 - reduccio);
-	if (grade < 0)
-		grade = 0.0;
 	cout << "Grade :=>> " << grade << endl;
+	output["score"] = grade;
+	jsonFile.open("results.json");
+	jsonFile << setw(4) << output << endl;
+	jsonFile.close();
+
 	if (grade == 10.0)
-		cout << "Comment :=>> Final del test sense errors" << endl;
+		cout << " Final del test sense errors" << endl;
 	return 0;
 }
