@@ -18,6 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\passatger.h" />
+    <ClInclude Include="source\seient.h" />
+    <ClInclude Include="test\json.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\seient.cpp" />
+    <ClCompile Include="test\test.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{D6B2B0FB-D933-4E61-B166-55431E6696C9}</ProjectGuid>
@@ -120,14 +129,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="passatger.h" />
-    <ClInclude Include="seient.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="seient.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

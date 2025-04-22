@@ -13,21 +13,36 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de origen\source">
+      <UniqueIdentifier>{4fda5b39-0e78-4d3b-b998-f7084c802f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\test">
+      <UniqueIdentifier>{1e5ea503-bb19-4264-ab95-d1942fb91399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\source">
+      <UniqueIdentifier>{10d4957b-f496-4b4c-aa74-964c552b7d74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\test">
+      <UniqueIdentifier>{a3cc0c42-0250-4208-9951-4fb261ce713e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="seient.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="test\json.hpp">
+      <Filter>Archivos de encabezado\test</Filter>
     </ClInclude>
-    <ClInclude Include="passatger.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="source\passatger.h">
+      <Filter>Archivos de encabezado\source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\seient.h">
+      <Filter>Archivos de encabezado\source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="seient.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="test\test.cpp">
+      <Filter>Archivos de origen\test</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="source\seient.cpp">
+      <Filter>Archivos de origen\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-#include "seient.h"
+#include "../source/seient.h"
 #include <iostream>
 using namespace std;
 
