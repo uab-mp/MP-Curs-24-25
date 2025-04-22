@@ -71,12 +71,12 @@ bool igualArrays(Posicio array1[], int nElements1, Posicio array2[], int nElemen
 
 void mostraTauler(char tauler[N_FILES_TAULER][N_COLUMNES_TAULER], stringstream& outputParcial)
 {
-    for (int fila = 0; fila < NUM_FILES; fila++)
+    for (int fila = 0; fila < N_FILES_TAULER; fila++)
     {
-        outputParcial << to_string(NUM_FILES - fila) + ": ";
-        for (int col = 0; col < NUM_COLUMNES; col++){
+        outputParcial << to_string(N_FILES_TAULER - fila) + ": ";
+        for (int col = 0; col < N_COLUMNES_TAULER; col++){
             outputParcial << tauler[fila][col];
-            if (col != NUM_COLUMNES -1)
+            if (col != N_COLUMNES_TAULER -1)
             {
                 outputParcial <<  " ";
             }
@@ -136,7 +136,7 @@ void llegeixTauler(const string& nomFitxer, char estatTauler[N_FILES_TAULER][N_C
             fitxer >> fitxa;
             fitxer >> pos;
             char columna = pos[0] - 'a';
-            char fila = NUM_FILES - (pos[1] - '0');
+            char fila = N_FILES_TAULER - (pos[1] - '0');
             estatTauler[fila][columna] = fitxa;
         }
         fitxer.close();
