@@ -74,7 +74,8 @@ void mostraTauler(char tauler[N_FILES_TAULER][N_COLUMNES_TAULER], stringstream& 
     for (int fila = 0; fila < N_FILES_TAULER; fila++)
     {
         outputParcial << to_string(N_FILES_TAULER - fila) + ": ";
-        for (int col = 0; col < N_COLUMNES_TAULER; col++){
+        for (int col = 0; col < N_COLUMNES_TAULER; col++)
+        {
             outputParcial << tauler[fila][col];
             if (col != N_COLUMNES_TAULER -1)
             {
@@ -111,6 +112,8 @@ bool comprovaTauler(char taulerEsperat[N_FILES_TAULER][N_COLUMNES_TAULER], strin
         }
         fila++;
     }
+    if ((iguals) && (fila != N_FILES_TAULER))
+        iguals = false;
     return iguals;
 }
 
