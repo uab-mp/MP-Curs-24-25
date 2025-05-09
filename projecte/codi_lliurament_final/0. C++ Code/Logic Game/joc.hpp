@@ -11,7 +11,7 @@ class Joc
 {
 
 public:
-    Joc():m_fila(0), m_columna(0) {};
+    Joc() {};
     
     bool actualitza(int mousePosX, int mousePosY, bool mouseStatus);
     
