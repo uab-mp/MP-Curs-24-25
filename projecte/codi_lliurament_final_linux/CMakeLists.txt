@@ -12,6 +12,9 @@ find_package(SDL2 REQUIRED CONFIG REQUIRED COMPONENTS SDL2)
 
 add_executable(codi_lliurament_final)
 
+# Compile with verbose output, add debug information and don't optimize anything for easier instruction stepping
+target_compile_options(codi_lliurament_final PRIVATE -Wextra -g -O0)
+
 # Include from anywhere
 include_directories("0. C++ Code/Graphic Lib")
 include_directories("0. C++ Code/Graphic Lib/NFont")
