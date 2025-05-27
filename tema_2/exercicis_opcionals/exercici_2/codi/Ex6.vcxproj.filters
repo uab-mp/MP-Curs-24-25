@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado\source">
+      <UniqueIdentifier>{3dcf607e-a0d5-4343-a374-797afe602268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\test">
+      <UniqueIdentifier>{0caee969-2a2d-4ba6-ae70-69267bfabaf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\source">
+      <UniqueIdentifier>{07119767-d0a8-4207-9562-407258d6b2d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\test">
+      <UniqueIdentifier>{a98cb024-1f20-41a3-b1c3-2745134f6506}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\llista.cpp">
+      <Filter>Archivos de origen\source</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test.cpp">
+      <Filter>Archivos de origen\test</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\llista.h">
+      <Filter>Archivos de encabezado\source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\node.h">
+      <Filter>Archivos de encabezado\source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\punt.h">
+      <Filter>Archivos de encabezado\source</Filter>
+    </ClInclude>
+    <ClInclude Include="test\json.hpp">
+      <Filter>Archivos de encabezado\test</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
