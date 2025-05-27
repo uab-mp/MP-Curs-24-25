@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de origen">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Archivos de encabezado\source">
+      <UniqueIdentifier>{5b12cb49-e55e-4288-9d04-84d72a52add8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\test">
+      <UniqueIdentifier>{36fe4d72-9db6-442d-8b88-6804e20af725}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\source">
+      <UniqueIdentifier>{0868fe40-426e-4c04-b293-8b389ad265fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\test">
+      <UniqueIdentifier>{4e8418cb-3f37-4dca-aad4-dd562ffd12a2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\llista_doble.h">
+      <Filter>Archivos de encabezado\source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\node.h">
+      <Filter>Archivos de encabezado\source</Filter>
+    </ClInclude>
+    <ClInclude Include="test\json.hpp">
+      <Filter>Archivos de encabezado\test</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\llista_doble.cpp">
+      <Filter>Archivos de origen\source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\node.cpp">
+      <Filter>Archivos de origen\source</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test.cpp">
+      <Filter>Archivos de origen\test</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
